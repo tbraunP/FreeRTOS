@@ -1,6 +1,6 @@
 ;
 ;/*
-;    FreeRTOS V7.4.2 - Copyright (C) 2013 Real Time Engineers Ltd.
+;    FreeRTOS V7.5.2 - Copyright (C) 2013 Real Time Engineers Ltd.
 ;	
 ;
 ;    ***************************************************************************
@@ -57,7 +57,7 @@
 
 	.include data_model.h
 
-	.global vTaskIncrementTick
+	.global xTaskIncrementTick
 	.global vTaskSwitchContext
 	.global vPortSetupTimerInterrupt
 	.global pxCurrentTCB
@@ -112,7 +112,7 @@ vPortPreemptiveTickISR: .asmfunc
 	push.w sr
 	portSAVE_CONTEXT
 				
-	call_x	#vTaskIncrementTick
+	call_x	#xTaskIncrementTick
 	call_x	#vTaskSwitchContext
 		
 	portRESTORE_CONTEXT
@@ -128,7 +128,7 @@ vPortCooperativeTickISR: .asmfunc
 	push.w sr
 	portSAVE_CONTEXT
 				
-	call_x	#vTaskIncrementTick
+	call_x	#xTaskIncrementTick
 		
 	portRESTORE_CONTEXT
 	
